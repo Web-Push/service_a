@@ -10,9 +10,10 @@ self.addEventListener('message', function (event) {
 /** Push通知を受けたときの処理 */
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
-  self.registration.showNotification("サービスA", {
-    body:'お知らせ準備中',
-    tag:'service_a_test-notification-tag' 
+  self.registration.showNotification('サービスA', {
+    body:'お知らせ通知',
+    tag:'service_a_test-notification-tag' ,
+    silent:true
   });
   event.waitUntil(
     fetch('https://web-push.github.io/WebPushControl/users.json').then(function(response){
