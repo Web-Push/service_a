@@ -12,7 +12,7 @@ self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
   self.registration.showNotification("サービスA", {
     body:'お知らせ準備中',
-    tag:'k_y_test-notification-tag' 
+    tag:'service_a_test-notification-tag' 
   });
   event.waitUntil(
     fetch('https://web-push.github.io/WebPushControl/users.json').then(function(response){
@@ -42,12 +42,12 @@ self.addEventListener('notificationclick', function(event) {
   }).then(function(clientList) {
     for (var i = 0; i < clientList.length; i++) {
       var client = clientList[i];
-      if (client.url === 'https://web-push.github.io/k_y_test/' && 'focus' in client) {
+      if (client.url === 'https://web-push.github.io/service_a/' && 'focus' in client) {
         return client.focus();
       }
     }
     if (clients.openWindow) {
-      return clients.openWindow('https://web-push.github.io/k_y_test/');
+      return clients.openWindow('https://web-push.github.io/service_a/');
     }
   }));
 });
@@ -144,7 +144,8 @@ function checkLogin(jsondata) {
           cnt++;
         }
       }
-      showNotification(result, user);
+      //showNotification(result, user);
+      showNotification(true, user);
     };
   };
 }
@@ -154,7 +155,7 @@ function showNotification(result, user) {
   var title = 'サービスA';
   var body = '';
   var icon = '/images/icon-192x192.png';
-  var tag = 'k_y_test-notification-tag';
+  var tag = 'service_a_test-notification-tag';
 
   if (result === true) {
     body = user + 'さんへお知らせ';
