@@ -17,7 +17,6 @@ self.addEventListener('push', function(event) {
   });
   event.waitUntil(
     fetch('https://web-push.github.io/WebPushControl/users.json', {
-        mode: 'cors',
         credentials: 'include'
       }).then(function(response){
       if (response.status !== 200) {
