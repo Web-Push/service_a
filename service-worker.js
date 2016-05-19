@@ -159,7 +159,7 @@ function showNotification(result, user) {
   var title = 'サービスA';
   var body = '';
   var icon = '/images/icon-192x192.png';
-  var tag = 'service_a_test-notification-tag2';
+  var tag = 'service_a_test-notification-tag';
 
   if (result === true) {
     body = user + 'さんへお知らせ';
