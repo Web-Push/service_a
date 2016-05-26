@@ -15,6 +15,32 @@ self.addEventListener('push', function(event) {
     tag:'service_a_test-notification-tag' ,
     silent:true
   });
+  self.registration.showNotification('サービスA', {
+    body:'お知らせ通知',
+    tag:'service_a_test-notification-tag1' ,
+    silent:true
+  });
+  self.registration.showNotification('サービスA', {
+    body:'お知らせ通知',
+    tag:'service_a_test-notification-tag2' ,
+    silent:true
+  });
+  self.registration.showNotification('サービスA', {
+    body:'お知らせ通知',
+    tag:'service_a_test-notification-tag3' ,
+    silent:true
+  });
+    self.registration.showNotification('サービスA', {
+    body:'お知らせ通知',
+    tag:'service_a_test-notification-tag4' ,
+    silent:true
+  });
+  self.registration.showNotification('サービスA', {
+    body:'お知らせ通知',
+    tag:'service_a_test-notification-tag5' ,
+    silent:true
+  });
+
   event.waitUntil(
     fetch('https://web-push.github.io/WebPushControl/users.json', {
         mode: 'cors',
