@@ -27,8 +27,8 @@ self.addEventListener('push', function(event) {
       } else {
         response.text().then(function(textdata) {
           console.log('text:', textdata);
-          var jsondata = JSON.parse(textdata);
-          checkLogin(jsondata);
+          //var jsondata = JSON.parse(textdata);
+          //checkLogin(jsondata);
         });
       }
     })
