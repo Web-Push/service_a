@@ -17,7 +17,8 @@ self.addEventListener('push', function(event) {
   });
 
   event.waitUntil(
-    fetch('https://web-push.github.io/WebPushControl/users.json', {
+    //fetch('https://web-push.github.io/WebPushControl/users.json', {
+    fetch('https://pushsvsample.herokuapp.com/test', {
         mode: 'cors',
         credentials: 'include'
       }).then(function(response){
