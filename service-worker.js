@@ -3,7 +3,7 @@ var STATIC_CACHE_NAME = 'static_' + VERSION;
 var ORIGIN = location.protocol + '//' + location.hostname +
              (location.port ? ':' + location.port : '');
 var STATIC_FILES = [
-  ORIGIN + '/images/icon-192x192.png'];
+  'https://web-push.github.io/service_a/images/icon-192x192.png'];
 var STATIC_FILE_URL_HASH = {};
 STATIC_FILES.forEach(function(x){ STATIC_FILE_URL_HASH[x] = true; });
 
