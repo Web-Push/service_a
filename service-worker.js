@@ -1,5 +1,26 @@
-var g_test1 = "abc";
-var g_test2 = "xyz";
+var VERSION = 1;
+var STATIC_CACHE_NAME = 'static_' + VERSION;
+var ORIGIN = location.protocol + '//' + location.hostname +
+             (location.port ? ':' + location.port : '');
+var STATIC_FILES = [
+  ORIGIN + '/images/icon-192x192.png'];
+var STATIC_FILE_URL_HASH = {};
+STATIC_FILES.forEach(function(x){ STATIC_FILE_URL_HASH[x] = true; });
+
+self.addEventListener('install', function(evt) {
+    evt.waitUntil(
+        caches.open(STATIC_CACHE_NAME).then(function(cache) {
+            return Promise.all(STATIC_FILES.map(function(url) {
+                return fetch(new Request(url)).then(function(response) {
+                    if (response.ok)
+                      return cache.put(response.url, response);
+                    return Promise.reject(
+                        'Invalid response.  URL:' + response.url +
+                        ' Status: ' + response.status);
+                  });
+              }));
+          }));
+});
 /** Webサイト側からPostMessageで送られたデータを受信する */
 self.addEventListener('message', function (event) {
   console.log(event.data.action);
@@ -15,8 +36,6 @@ self.addEventListener('push', function(event) {
   console.log('test1:' + g_test1);
   console.log('test2:' + g_test2);
   
-  g_test1 = "123";
-  g_test2 = "456";
   self.registration.showNotification('サービスA', {
     body:'お知らせ通知',
     tag:'service_a_test-notification-tag' ,
