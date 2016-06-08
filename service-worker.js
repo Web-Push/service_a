@@ -8,9 +8,11 @@ var STATIC_FILE_URL_HASH = {};
 STATIC_FILES.forEach(function(x){ STATIC_FILE_URL_HASH[x] = true; });
 
 self.addEventListener('install', function(evt) {
+    console.log('oninstall');
     evt.waitUntil(
         caches.open(STATIC_CACHE_NAME).then(function(cache) {
             return Promise.all(STATIC_FILES.map(function(url) {
+                console.log('url:' + url);
                 return fetch(new Request(url)).then(function(response) {
                     if (response.ok)
                       return cache.put(response.url, response);
