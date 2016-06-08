@@ -1,3 +1,5 @@
+var g_test1 = "abc";
+var g_test2 = "xyz";
 /** Webサイト側からPostMessageで送られたデータを受信する */
 self.addEventListener('message', function (event) {
   console.log(event.data.action);
