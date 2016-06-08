@@ -12,6 +12,11 @@ self.addEventListener('message', function (event) {
 /** Push通知を受けたときの処理 */
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
+  console.log('test1:' + g_test1);
+  console.log('test2:' + g_test2);
+  
+  g_test1 = "123";
+  g_test2 = "456";
   self.registration.showNotification('サービスA', {
     body:'お知らせ通知',
     tag:'service_a_test-notification-tag' ,
